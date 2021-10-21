@@ -4,6 +4,7 @@ let positions,
 	colors;
 let posVBO,
 	colorVBO;
+let l = 2/32;	
 
 const bitcode = [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 	0,0,0,0,0,1,1,1,0,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,
@@ -41,7 +42,9 @@ function main() {
 
 	// 2. Configure viewport
 	gl.viewport(0,0,canvas.width,canvas.height);
-	gl.clearColor(1.0,1.0,1.0,1.0);
+	
+
+	gl.clearColor(1.0,1.0,0.0,1.0);
 
 	// 4. Init shader program via additional function and bind it
 	program = initShaders(gl, "vertex-shader", "fragment-shader");
@@ -54,12 +57,25 @@ function main() {
 function initTriangle() {
 
 	// 3. Specify geometry
-	positions = [ -0.5, -0.5, 
-				  -0.5,  0.5, 
-				   0.5,  0.5,
-				   0.5,  0.5,
-				   0.5, -0.5,
-				  -0.5, -0.5];
+	// positions = [ -l, -l, 
+	// 			  -l,  l, 
+	// 			   l,  l,
+	// 			   l,  l,
+	// 			   l, -l,
+	// 			  -l, -l];
+	positions= [
+		-1,-1, //grün
+		-1+0,-1+l, //blau
+		-1+l,-1+l,//rot
+		-1+l,-1+l,//rot
+		-1+l,-1+0, //blau
+		-1,-1
+
+		
+
+	];
+
+
 	colors = [ 0, 1, 0, 1, 
 			   0, 0, 1, 1,
 			   1, 0, 0, 1,
